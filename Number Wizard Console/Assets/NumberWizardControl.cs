@@ -20,7 +20,7 @@ public class NumberWizardControl : MonoBehaviour {
         Debug.Log("It must be equal to or less than " + maxGuess);
     }
 	
-	// TODO: Clean the update methos for handling input to be a switch
+	// TODO: Clean the update methods for handling input to be a switch
     
     // Update is called once per frame
 	public void Update ()
@@ -29,11 +29,17 @@ public class NumberWizardControl : MonoBehaviour {
         var selectedKey = Input.inputString;
         switch (selectedKey)
         {
-            case "A":
+            case "a":
                 Debug.Log("You Pressed A");
                 break;
-            case "B":
+            case "b":
                 Debug.Log("You Pressed B");
+                break;
+            case "UpArrow":
+                Debug.Log("You Selected Higher");
+                break;
+            case "DownArrow":
+                Debug.Log("You Selected Lower");
                 break;
         }
 
