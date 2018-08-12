@@ -8,15 +8,16 @@ public class NumberWizardControl : MonoBehaviour {
     // Declare Variables
     int maxGuess = 1000;
     int minGuess = 1;
-    int guess = 500;
+    int playerGuess = 500;
     
     // Use this for initialization
 	void Start ()
     {
-        Debug.Log("Welcome to Number Wizard");
-        Debug.Log("Please pick a number");
-        Debug.Log("It must be equal to or greater than " + minGuess);
-        Debug.Log("It must be equal to or less than " + maxGuess);
+        Debug.Log("Welcome to Number Wizard, please think of a number...");
+        Debug.Log("It must be equal to, or greater than " + minGuess);
+        Debug.Log("It must be equal to, or less than " + maxGuess);
+        Debug.Log("Please use the UP & DOWN arrows to indicate whether higher or lower.");
+        maxGuess++;
         MakeAGuess();
     }
 	
@@ -29,20 +30,20 @@ public class NumberWizardControl : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             Debug.Log("It is higher.");
-            minGuess = guess;
-            guess = minGuess - guess * 2;
+            minGuess = playerGuess;
+            playerGuess = (minGuess + maxGuess) / 2;
             MakeAGuess();
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             Debug.Log("It is lower");
-            maxGuess = guess;
-            guess = maxGuess - guess / 2;
+            maxGuess = playerGuess;
+            playerGuess = (minGuess + maxGuess) / 2;
             MakeAGuess();
         }
         else if (Input.GetKeyDown(KeyCode.Return))
         {
-            Debug.Log("Your number is " + guess);
+            Debug.Log("Your number is " + playerGuess);
         }
         else
         {
@@ -53,6 +54,6 @@ public class NumberWizardControl : MonoBehaviour {
     void MakeAGuess ()
     {
 
-        Debug.Log("Is your number higher or lower than " + guess + "?");
+        Debug.Log("Is your number higher or lower than " + playerGuess + "?");
     }
 }
