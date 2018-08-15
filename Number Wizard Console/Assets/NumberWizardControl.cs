@@ -6,44 +6,60 @@ using UnityStandardAssets.CrossPlatformInput;
 public class NumberWizardControl : MonoBehaviour {
 
     // Declare Variables
-    int maxGuess = 1000;
-    int minGuess = 1;
-    int playerGuess = 500;
+    int maxGuess;
+    int minGuess;
+    int playerGuess;
     
     // Use this for initialization
 	void Start ()
     {
-        Debug.Log("Welcome to Number Wizard, please think of a number...");
+        StartGame();
+        ProcessGuess();
+    }
+
+    private void StartGame()
+    {
+        maxGuess = 1000;
+        minGuess = 1;
+        playerGuess = 500;
+        Debug.Log("Hello! Please think of a number...");
         Debug.Log("It must be equal to, or greater than " + minGuess);
         Debug.Log("It must be equal to, or less than " + maxGuess);
         Debug.Log("Please use the UP & DOWN arrows to indicate whether higher or lower.");
+        Debug.Log("Press ENTER to confirm when your number is guessed.");
         maxGuess++;
-        MakeAGuess();
     }
-	
-	// TODO: Clean the update methods for handling input to be a switch
-    
-    // Update is called once per frame
-	public void Update ()
+
+    // Prompt user to guess
+    private void ProcessGuess()
     {
-        // Using Ifs
+        playerGuess = (minGuess + maxGuess) / 2;
+        Debug.Log("Is your number higher or lower than " + playerGuess + "?");
+    }
+
+    // Update is called once per frame
+    public void Update ()
+    {
+        ProcessInput();
+    }
+
+    // Process user input
+    private void ProcessInput()
+    {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            Debug.Log("It is higher.");
             minGuess = playerGuess;
-            playerGuess = (minGuess + maxGuess) / 2;
-            MakeAGuess();
+            ProcessGuess();
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            Debug.Log("It is lower");
             maxGuess = playerGuess;
-            playerGuess = (minGuess + maxGuess) / 2;
-            MakeAGuess();
+            ProcessGuess();
         }
         else if (Input.GetKeyDown(KeyCode.Return))
         {
             Debug.Log("Your number is " + playerGuess);
+            Invoke("StartGame", 5);
         }
         else
         {
@@ -51,9 +67,5 @@ public class NumberWizardControl : MonoBehaviour {
         }
     }
 
-    void MakeAGuess ()
-    {
 
-        Debug.Log("Is your number higher or lower than " + playerGuess + "?");
-    }
 }
