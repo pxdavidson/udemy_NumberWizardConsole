@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class NumberWizardControl : MonoBehaviour {
+public class NumberWizardControl : MonoBehaviour
+{
 
     // Declare Variables
     int maxGuess;
