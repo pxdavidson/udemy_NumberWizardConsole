@@ -10,9 +10,12 @@ public class NumberWizardControl : MonoBehaviour
     int maxGuess;
     int minGuess;
     int playerGuess;
-    
+
+    //Other Scripts
+    UITextRenderer uITextRenderer;
+
     // Use this for initialization
-	void Start ()
+    void Start ()
     {
         StartGame();
         ProcessGuess();
@@ -61,6 +64,10 @@ public class NumberWizardControl : MonoBehaviour
         {
             Debug.Log("Your number is " + playerGuess);
             Invoke("StartGame", 5);
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            // Use this to test sending messages to the uITextRenderer.ParseText()
         }
         else
         {
