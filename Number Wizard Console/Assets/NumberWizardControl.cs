@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.UI;
+using System;
 
 public class NumberWizardControl : MonoBehaviour
 {
@@ -17,20 +19,17 @@ public class NumberWizardControl : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        StartGame();
+        DefineVariables();
         ProcessGuess();
     }
 
-    private void StartGame()
+    // Used to define the global variables used
+    void DefineVariables()
     {
+        uITextRenderer = FindObjectOfType<UITextRenderer>();
         maxGuess = 1000;
         minGuess = 1;
         playerGuess = 500;
-        Debug.Log("Hello! Please think of a number...");
-        Debug.Log("It must be equal to, or greater than " + minGuess);
-        Debug.Log("It must be equal to, or less than " + maxGuess);
-        Debug.Log("Please use the UP & DOWN arrows to indicate whether higher or lower.");
-        Debug.Log("Press ENTER to confirm when your number is guessed.");
         maxGuess++;
     }
 
@@ -38,7 +37,7 @@ public class NumberWizardControl : MonoBehaviour
     private void ProcessGuess()
     {
         playerGuess = (minGuess + maxGuess) / 2;
-        Debug.Log("Is your number higher or lower than " + playerGuess + "?");
+        uITextRenderer.ParseText("Is your number higher or lower than " + playerGuess + "?");
     }
 
     // Update is called once per frame
@@ -60,14 +59,14 @@ public class NumberWizardControl : MonoBehaviour
             maxGuess = playerGuess;
             ProcessGuess();
         }
-        else if (Input.GetKeyDown(KeyCode.Return))
+        else if (Input.GetKeyUp(KeyCode.Return))
         {
-            Debug.Log("Your number is " + playerGuess);
-            Invoke("StartGame", 5);
+            uITextRenderer.ParseText("Your number is " + playerGuess + " press Space to play again");
+            
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyUp(KeyCode.Space))
         {
-            // Use this to test sending messages to the uITextRenderer.ParseText()
+            Start();
         }
         else
         {
