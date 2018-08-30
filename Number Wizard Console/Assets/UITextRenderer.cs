@@ -11,13 +11,8 @@ public class UITextRenderer : MonoBehaviour
     // Use this for initialization
 	void Start ()
     {
-        DefineVariables();
-        ParseText(defaultText);
-    }
-
-    private void DefineVariables()
-    {
         mainBodyText = GetComponent<Text>();
+        ParseText(defaultText);
     }
 
     public void ParseText(string update)
