@@ -5,7 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Start_NumberWizard.unity
+    guid: 4663cd57ef772c2419caa9d26634ee66
+  - enabled: 1
+    path: Assets/Scenes/Core_NumberWizard.unity
+    guid: b79419294623a274592dc05614dfc57a
+  - enabled: 1
+    path: Assets/Scenes/Win_Numberwizard.unity
+    guid: f9672448c0a65fc41b57b5556fd4fa15
   m_configObjects: {}
