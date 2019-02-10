@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine.UI;
-using System;
 
 public class NumberWizardControl : MonoBehaviour
 {
@@ -14,40 +11,38 @@ public class NumberWizardControl : MonoBehaviour
     int playerGuess;
 
     //Other Scripts
-    Text textRenderer;
+    [SerializeField] Text guessText;
 
     // Use this for initialization
     void Start ()
     {
-        DefineVariables();
-        ProcessGuess();
+        UpdateGuess();
     }
 
-    // Used to define the global variables used
-    void DefineVariables()
+    // Update playerGuess var
+    private void UpdateGuess()
     {
-        textRenderer = FindObjectOfType<Text>();
-        maxGuess++;
+        playerGuess = Random.Range(minGuess, maxGuess);
+        UpdateText();
     }
 
-    // Prompt user to guess
-    private void ProcessGuess()
+    // Update the guessText var
+    private void UpdateText()
     {
-        playerGuess = (minGuess + maxGuess) / 2;
+        guessText.text = playerGuess.ToString();
     }
 
     // Number is lower
     public void OnPressLower()
     {
-        maxGuess = playerGuess;
-        ProcessGuess();
+        maxGuess = playerGuess -1;
+        UpdateGuess();
     }
 
     // Number is higher
     public void OnPressHigher()
     {
-        minGuess = playerGuess;
-        ProcessGuess();
+        minGuess = playerGuess +1;
+        UpdateGuess();
     }
-
 }

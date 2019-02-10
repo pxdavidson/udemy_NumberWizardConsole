@@ -300,6 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxGuess: 1000
   minGuess: 1
+  guessText: {fileID: 1108124651}
 --- !u!4 &309135008
 Transform:
   m_ObjectHideFlags: 0
